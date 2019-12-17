@@ -1,0 +1,42 @@
+/*CONTAINERS*/
+.module-dialog-wrapper{
+  width: 99%; height: 99%;
+  overflow: hidden;
+  color: white;
+  font-family: "Avenir Next", sans-serif;
+  font-size: 1em;
+  border: 2px white solid;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.module-dialog-container{
+  height: 100%; width: 100%;
+}
+
+.module-dialog-container::-webkit-scrollbar {
+  display: none;
+}
+
+.module-container{
+  display: flex; flex-direction: row;
+  margin-bottom: 4%;
+}
+
+.module-container:last-child{
+  margin-bottom: 15%;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*ITEMS*/
+.module-dialog-title{
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 2%;
+  text-decoration: underline white;
+}
+
+.module-icon{
+  width: 15%; height: 15%;
+  cursor: pointer;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/

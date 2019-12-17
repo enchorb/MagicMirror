@@ -1,0 +1,37 @@
+<div #weather class="weather-wrapper" cdkDragBoundary=".app-wrapper" cdkDrag (cdkDragEnded)="onDragEnd($event)" [ngClass]="{'weather-vertical': !moduleService.ui.screenOrientation}">
+  <div class="weather-container">
+    <div class="city-display" *ngIf="weatherArray[0]?.api">{{weatherArray[0].api.name}}, {{weatherArray[0].api.sys.country}}</div>
+
+    <cdk-virtual-scroll-viewport itemSize="1" class="data-container">
+      <div class="weather">
+        <div class="date-display" *ngIf="weatherArray[0]?.date">{{weatherArray[0].date.month}}/{{weatherArray[0].date.day}} @ {{weatherArray[0].date.hour_12}}{{weatherArray[0].date.meridiem}}</div>
+        <div class="weather-data" *ngIf="weatherArray[0]?.api; else loadingWeather">
+          <span class="align-tool"></span>
+          <img class="weather-img" [src]="weatherArray[0].image" [matTooltip]="weatherArray[0].api.weather[0].description.toUpperCase()" matTooltipPosition="after" >
+          <span class="align-tool"></span>
+        </div>
+        <div class="temp-display" *ngIf="weatherArray[0]?.api">Temperature: {{weatherArray[0].api.main.temp}}° {{((moduleService.weather.unit == 'Metric') ? 'C' : 'F')}}</div>
+        <ng-template #loadingWeather>
+          <div class="loading-spinner"><span class="align-tool"></span><mat-spinner diameter="75"></mat-spinner><span class="align-tool"></span></div>
+        </ng-template>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-loop" *ngFor="let forecast of forecastArray">
+          <div class="date-display" *ngIf="forecast?.date">{{forecast.date.month}}/{{forecast.date.day}} @ {{forecast.date.hour_12}}{{forecast.date.meridiem}}</div>
+          <div class="forecast-data" *ngIf="forecast?.api; else loadingForecast">
+            <span class="align-tool"></span>
+            <img class="forecast-img" [src]="forecast.image" [matTooltip]="forecast.api.weather[0].description.toUpperCase()" matTooltipPosition="after" >
+            <span class="align-tool"></span>
+          </div>
+          <div class="temp-display" *ngIf="forecast?.api">Temperature: {{forecast.api.main.temp}}° {{((moduleService.weather.unit == 'Metric') ? 'C' : 'F')}}</div>
+          <ng-template #loadingForecast>
+            <div class="loading-spinner"><span class="align-tool"></span><mat-spinner diameter="75"></mat-spinner><span class="align-tool"></span></div>
+          </ng-template>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+
+  </div>
+</div>
+

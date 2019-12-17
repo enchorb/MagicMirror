@@ -1,0 +1,100 @@
+/*CONTAINERS*/
+.weather-wrapper{
+  width: max-content; height: max-content;
+  top: 0; left: 0;
+  cursor: move;
+  transition: box-shadow 200ms cubic-bezier(255, 255, 255, 1);
+  position: absolute;
+  overflow: hidden;
+  border: 1px white solid;
+}
+
+.weather-wrapper:active{
+  border: 1px white solid;
+  box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+  0 8px 10px 1px rgba(255, 255, 255, 0.14),
+  0 3px 14px 2px rgba(255, 255, 255, 0.12);
+}
+
+.weather-vertical{
+  width: max-content; height: max-content;
+  top: 0; left: 0;
+  cursor: move;
+  transition: box-shadow 200ms cubic-bezier(255, 255, 255, 1);
+  position: absolute;
+  overflow: hidden;
+  border: 1px white solid;
+}
+
+.weather-vertical:active{
+  border: 1px white solid;
+  box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+  0 8px 10px 1px rgba(255, 255, 255, 0.14),
+  0 3px 14px 2px rgba(255, 255, 255, 0.12);
+}
+
+.weather-container{
+  width: 100%; height: 100%;
+  color: white; font-family: "Avenir Next", sans-serif;
+}
+
+.data-container{
+  width: 250px; height: 350px;
+}
+
+.data-container::-webkit-scrollbar {
+  display: none;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*ITEMS*/
+.loading-spinner{
+  display: flex; flex-direction: row;
+}
+
+.date-display{
+  width: inherit; height: fit-content;
+  text-align: center;
+}
+
+.city-display{
+  width: inherit; height: fit-content;
+  text-align: center; font-weight: bold;
+  border-bottom: 1px white solid;
+}
+
+.temp-display{
+  width: inherit; height: fit-content;
+  text-align: center;
+  border-bottom: 1px white solid;
+}
+
+.weather-img{
+  transform: scale(.75);
+}
+
+.forecast-img{
+  transform: scale(.75);
+}
+
+.weather{
+  width: 100%; height: fit-content;
+}
+
+.weather-data{
+  width: inherit; height: fit-content;
+  display: flex; flex-direction: row;
+}
+
+.forecast{
+  width: 100%; height: fit-content;
+}
+
+.forecast-loop{
+  width: inherit; height: fit-content;
+}
+
+.forecast-data{
+  width: inherit; height: fit-content;
+  display: flex; flex-direction: row;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/

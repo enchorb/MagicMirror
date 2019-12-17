@@ -1,0 +1,131 @@
+<div class="setup-wrapper" [@flyInOut]="animateState">
+  <span class="align-tool"></span>
+  <div class="new-wrapper" #userPage>
+    <span class="align-tool"></span><div class="left-btn"></div><span class="align-tool"></span>
+    <div class="new-container">
+      <div matRipple matRippleColor="white" class="setup-btn" style="margin-bottom: 7%;" (click)="onNewClk()">
+        <span class="align-tool"></span>
+        <span>New User</span>
+        <span class="align-tool"></span>
+      </div>
+      <div matRipple matRippleColor="white" class="setup-btn" (click)="onExistClk()">
+        <span class="align-tool"></span>
+        <span>Existing User</span>
+        <span class="align-tool"></span>
+      </div>
+    </div>
+    <span class="align-tool"></span><div class="right-btn"></div><span class="align-tool"></span>
+  </div>
+  <div class="new-wrapper" #namePage>
+    <span class="align-tool"></span>
+    <div class="left-btn" (click)="onPrevName()">
+      <span class="align-tool"></span>
+      <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="#ffffff" d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z"/>
+      </svg>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+    <div class="form-container">
+      <span class="align-tool"></span>
+      <form class="input-form" [formGroup]="newUserForm">
+        <mat-form-field appearance="outline" class="my-form-field">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" placeholder="Enter Name" name="name" formControlName="name" class="my-input-field" [(ngModel)]="user.name" autocomplete="off">
+        </mat-form-field>
+      </form>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+    <div class="right-btn" (click)="onNewDone()">
+      <span class="align-tool"></span>
+      <svg class="right-icon" style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [ngClass]="{'form-status-valid': !this.newUserForm.valid, 'form-status-invalid': this.newUserForm.valid}">
+       <path fill="#ffffff"  d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z"/>
+      </svg>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+  </div>
+  <div class="new-wrapper" #weatherPage>
+    <span class="align-tool"></span>
+    <div class="left-btn" (click)="onPrevWeather()">
+      <span class="align-tool"></span>
+      <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="#ffffff" d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z" />
+      </svg>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+    <div class="form-container">
+      <span class="align-tool"></span>
+      <form class="input-form" [formGroup]="weatherForm">
+        <mat-form-field appearance="outline" class="my-form-field">
+          <mat-label>City</mat-label>
+          <input matInput type="text" placeholder="Enter City Name" name="city" formControlName="city" class="my-input-field" [(ngModel)]="user.weather.city" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="my-form-field">
+          <mat-label>Country</mat-label>
+          <input matInput type="text" placeholder="Enter 2-Digit Country Code" name="country" formControlName="country" class="my-input-field" [(ngModel)]="user.weather.country" autocomplete="off" maxlength="16">
+        </mat-form-field>
+        <mat-radio-group class="my-radio-field" formControlName="unit" [(ngModel)]="user.weather.unit">
+          <span class="align-tool"></span>
+          <mat-radio-button value="Metric" color="primary">Metric</mat-radio-button>
+          <span class="align-tool"></span>
+          <mat-radio-button value="Imperial" color="primary">Imperial</mat-radio-button>
+          <span class="align-tool"></span>
+        </mat-radio-group>
+      </form>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+    <div class="right-btn" (click)="onDone()">
+      <span class="align-tool"></span>
+      <svg class="right-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [ngClass]="{'form-status-valid': !this.weatherForm.valid, 'form-status-invalid': this.weatherForm.valid}">
+        <path fill="#ffffff" d="M9,16.2L4.8,12l-1.4,1.4L9,19,21,7l-1.4-1.4L9,16.2z"/>
+      </svg>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+  </div>
+  <div class="new-wrapper" #existPage>
+    <span class="align-tool"></span>
+    <div class="left-btn" (click)="onPrevExist()">
+      <span class="align-tool"></span>
+      <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="#ffffff" d="M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z" />
+      </svg>
+      <span class="align-tool"></span>
+    </div>
+    <span class="align-tool"></span>
+    <div class="exist-container">
+      <div class="exist-title">User Select</div>
+      <div *ngIf="moduleService.users?.length > 0">
+        <cdk-virtual-scroll-viewport itemSize="1" class="scroll-container" [ngClass]="{'scroll-container-vertical': !moduleService.ui.screenOrientation}">
+          <div *ngFor="let user of moduleService.users; let i = index;" class="user-card-container">
+            <span class="align-tool"></span>
+            <div class="user-number"><span class="align-tool"></span>{{i+1}}/{{moduleService.users.length}}<span class="align-tool"></span></div>
+            <span class="align-tool"></span>
+            <div (click)="onSelectUser($event, user)" matRipple matRippleColor="white" class="user-card">
+              {{user.name}}
+            </div>
+            <span class="align-tool"></span>
+            <div class="user-number">
+              <span class="align-tool"></span>
+                <svg (click)="onDeleteUser($event, user)" class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill="#ffffff" d="M3,6l3,18h12l3-18h-18zm19-4v2h-20v-2h5.711c.9,0,1.631-1.099,1.631-2h5.316c0,.901.73,2,1.631,2h5.711z"/>
+                </svg>
+              <span class="align-tool"></span>
+            </div>
+            <span class="align-tool"></span>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      <div *ngIf="moduleService.users?.length == 0" class="no-users">
+        No Users
+      </div>
+    </div>
+    <span class="align-tool"></span><div class="right-btn"></div><span class="align-tool"></span>
+  </div>
+  <span class="align-tool"></span>
+</div>
+

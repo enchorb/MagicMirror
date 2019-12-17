@@ -1,0 +1,23 @@
+<div #datetime class="datetime-wrapper" cdkDragBoundary=".app-wrapper" cdkDrag
+     (cdkDragEnded)="onDragEnd($event)" [ngClass]="{'datetime-vertical': !moduleService.ui.screenOrientation}"
+     matTooltip="Double-Click To Change Time Format"
+>
+  <div class="datetime-container">
+    <div class="time">
+      <div class="second-meridiem">
+        <div>{{Clock | date: 'ss'}}</div>
+        <div class="sm-divider"></div>
+        <div>{{Clock | date: 'a' | lowercase}}</div>
+      </div>
+      <div class="hour-minute" (dblclick)="onClockFormat()">
+        <div *ngIf="!moduleService.datetime.clockFormat">{{Clock | date: 'h:mm'}}</div>
+        <div *ngIf="moduleService.datetime.clockFormat">{{Clock | date: 'H:mm'}}</div>
+      </div>
+    </div>
+    <div class="date">
+      <div class="day">{{Clock | date: 'EEEE'}}</div>
+      <br>
+      <div class="long-date">{{Clock | date: 'MMMM d yyyy'}}</div>
+    </div>
+  </div>
+</div>

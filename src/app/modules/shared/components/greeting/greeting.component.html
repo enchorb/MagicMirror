@@ -1,0 +1,5 @@
+<div #greeting class="greeting-wrapper" cdkDragBoundary=".app-wrapper" cdkDrag (cdkDragEnded)="onDragEnd($event)" cdkDragLockAxis="y" [ngClass]="{'greeting-vertical': !moduleService.ui.screenOrientation}">
+  <div class="greeting-container">
+    <span [@fadeInOut]="isAnimate ? 'init' : 'new'" class="compliment-txt">{{compliment}}</span>
+  </div>
+</div>

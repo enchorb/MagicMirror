@@ -1,0 +1,21 @@
+<div class="newsfeed-dialog-wrapper">
+  <div class="newsfeed-dialog-title">News Select</div>
+  <cdk-virtual-scroll-viewport itemSize="1" class="newsfeed-dialog-container">
+    <div class="newsfeed-dialog-for" *ngFor="let newsfeed of newsfeedArray; let last = last; let i = index;" [ngClass]="{'last-newsfeed' : last }">
+      <div class="newsfeed-data-container" [ngClass]="{'no-display': !loading}">
+        <span class="align-tool"></span>
+        <div class="newsfeed-checkbox-container">
+          <span class="align-tool"></span>
+          <mat-checkbox color="accent" [(ngModel)]="newsfeed.display" (change)="onCheck(newsfeed.display, i)" [disabled]="((moduleService.newsfeed.type) || (selectCnt >= 5 && !newsfeed.display) || (selectCnt <= 1 && newsfeed.display))"></mat-checkbox>
+          <span class="align-tool"></span>
+        </div>
+        <div class="newsfeed-divider"></div>
+       <img class="newsfeed-img" (load)="onLoad()" [src]="newsfeed.image" [matTooltip]="newsfeed.name" matTooltipPosition="after">
+        <span class="align-tool"></span>
+      </div>
+      <div *ngIf="loading" class="loading-spinner"><span class="align-tool"></span><mat-spinner diameter="45"></mat-spinner><span class="align-tool"></span></div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+  <div class="slide-display"><mat-slide-toggle color="accent" [(ngModel)]="moduleService.newsfeed.type" [matTooltip]="'Top Country News'" matTooltipPosition="after"></mat-slide-toggle></div>
+  <div class="select-display">{{selectCnt}}/5</div>
+</div>

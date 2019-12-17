@@ -1,0 +1,32 @@
+<div #newsfeed class="newsfeed-wrapper" cdkDragBoundary=".app-wrapper" (dblclick)="onSetup()"
+     cdkDrag (cdkDragEnded)="onDragEnd($event)" [ngClass]="{'newsfeed-vertical': !moduleService.ui.screenOrientation}"
+     matTooltip="Double-Click To Select News Sources"
+>
+  <div class="newsfeed-container">
+    <cdk-virtual-scroll-viewport itemSize="1" class="data-container">
+      <div class="newsfeed" *ngIf="!moduleService.newsfeed.type">
+        <div class="newsfeed-loop" *ngFor="let news of newsArray">
+          <div class="newsfeed-data" *ngIf="news?.article; else loadingNews">
+            <div class="news-title"><b>{{news.article.source.name}} - {{news.article.title | capitalize:'all'}}</b></div>
+            <div class="news-desc">{{news.article.description}}</div>
+          </div>
+          <ng-template #loadingNews>
+            <div class="loading-spinner"><span class="align-tool"></span><mat-spinner diameter="75"></mat-spinner><span class="align-tool"></span></div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="newsfeed" *ngIf="moduleService.newsfeed.type">
+        <div class="newsfeed-loop" *ngFor="let top of topArray">
+          <div class="newsfeed-data" *ngIf="top?.article; else loadingTop">
+            <div class="news-title"><b>{{top.article.title | capitalize:'all'}}</b></div>
+            <div class="news-desc">{{top.article.description}}</div>
+          </div>
+          <ng-template #loadingTop>
+            <div class="loading-spinner"><span class="align-tool"></span><mat-spinner diameter="75"></mat-spinner><span class="align-tool"></span></div>
+          </ng-template>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+    <div class="fadeout"></div>
+  </div>
+</div>

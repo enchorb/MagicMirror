@@ -1,0 +1,215 @@
+/*CONTAINERS*/
+.datetime-wrapper{
+  width: max-content; height: max-content;
+  top: 0; left: 0;
+  cursor: move;
+  transition: box-shadow 200ms cubic-bezier(255, 255, 255, 1);
+  position: absolute;
+  overflow: hidden;
+  border: 1px transparent solid;
+}
+
+.datetime-wrapper:active{
+  border: 1px white solid;
+  box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+  0 8px 10px 1px rgba(255, 255, 255, 0.14),
+  0 3px 14px 2px rgba(255, 255, 255, 0.12);
+}
+
+.datetime-vertical{
+  width: max-content; height: max-content;
+  top: 0; left: 0;
+  cursor: move;
+  transition: box-shadow 200ms cubic-bezier(255, 255, 255, 1);
+  position: absolute;
+  overflow: hidden;
+  border: 1px transparent solid;
+}
+
+.datetime-vertical:active{
+  border: 1px white solid;
+  box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+  0 8px 10px 1px rgba(255, 255, 255, 0.14),
+  0 3px 14px 2px rgba(255, 255, 255, 0.12);
+}
+
+.datetime-container{
+  width: 100%; height: 100%;
+  color: white;
+  font-family: "Avenir Next", sans-serif;
+  font-weight: lighter;
+  display: flex; flex-direction: column;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*ITEMS*/
+.date{
+  font-size: 25px;
+  float: right;
+  font-weight: normal;
+}
+
+.day{
+  float: right; clear: right;
+}
+
+.long-date{
+  float: right; clear: right;
+}
+
+.time{
+  width: 100%; height: fit-content;
+}
+
+.hour-minute{
+  font-family: "Avenir Next", sans-serif;
+  float: right;
+}
+
+.second-meridiem{
+  float: right; height: 100%;
+  font-weight: normal;
+  text-align: center;
+  color: #696969;
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+/*MEDIA QUERY*/
+@media only screen and (min-width: 641px) and (max-width: 1280px){ /*DEV: 720p*/
+  .date{
+    font-size: 25px;
+    margin-top: 15px;
+  }
+
+  .hour-minute{
+    font-size: 100px;
+    margin-top: -15px; margin-bottom: -30px;
+  }
+
+  .second-meridiem{
+    font-size: 20px;
+  }
+
+  .sm-divider{
+    height: 30px;
+  }
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1920px){ /*DEV: 1080p*/
+  .date{
+    font-size: 38px;
+    margin-top: 23px;
+  }
+
+  .hour-minute{
+    font-size: 150px;
+    margin-top: -22px; margin-bottom: -45px;
+  }
+
+  .second-meridiem{
+    font-size: 30px;
+  }
+
+  .sm-divider{
+    height: 45px;
+  }
+}
+
+@media only screen and (height: 1080px) and (width: 1920px){ /*1080p - Horizontal*/
+  .date{
+    font-size: 38px;
+    margin-top: 23px;
+  }
+
+  .hour-minute{
+    font-size: 150px;
+    margin-top: -22px; margin-bottom: -45px;
+  }
+
+  .second-meridiem{
+    font-size: 30px;
+  }
+
+  .sm-divider{
+    height: 45px;
+  }
+}
+
+@media only screen and (height: 1920px) and (width: 1080px){ /*1080p - Vertical*/
+  .date{
+    font-size: 38px;
+    margin-top: 23px;
+  }
+
+  .hour-minute{
+    font-size: 150px;
+    margin-top: -22px; margin-bottom: -45px;
+  }
+
+  .second-meridiem{
+    font-size: 30px;
+  }
+
+  .sm-divider{
+    height: 45px;
+  }
+}
+
+@media only screen and (height: 1280px) and (width: 720px){ /*720p - Vertical*/
+  .date{
+    font-size: 25px;
+    margin-top: 15px;
+  }
+
+  .hour-minute{
+    font-size: 100px;
+    margin-top: -15px; margin-bottom: -30px;
+  }
+
+  .second-meridiem{
+    font-size: 20px;
+  }
+
+  .sm-divider{
+    height: 30px;
+  }
+}
+
+@media only screen and (height: 720px) and (width: 1280px){ /*720p - Horizontal*/
+  .date{
+    font-size: 25px;
+    margin-top: 15px;
+  }
+
+  .hour-minute{
+    font-size: 100px;
+    margin-top: -15px; margin-bottom: -30px;
+  }
+
+  .second-meridiem{
+    font-size: 20px;
+  }
+
+  .sm-divider{
+    height: 30px;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 640px){ /*360p & Under*/
+  .date{
+    font-size: 12px;
+    margin-top: 7px;
+  }
+
+  .hour-minute{
+    font-size: 50px;
+    margin-top: -7px; margin-bottom: -15px;
+  }
+
+  .second-meridiem{
+    font-size: 10px;
+  }
+
+  .sm-divider{
+    height: 15px;
+  }
+}
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
